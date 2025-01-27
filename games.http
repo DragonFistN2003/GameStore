@@ -1,0 +1,36 @@
+// getting the games list
+GET http://localhost:5046/games
+
+// Getting a specific game by id
+###
+GET http://localhost:5046/games/3
+
+// Adding a new game to the games list
+###
+POST http://localhost:5046/games
+Content-Type : application/json
+
+{
+    "Name": "Ratchet & Clank: Rift Apart",
+    "Genre": "Action-Adventure",
+    "Price": 70,
+    "GOTY": false,
+    "ReleaseDate": "2021-06-11"
+}
+
+// Deleting a game from the games list
+###
+DELETE http://localhost:5046/games/4
+
+// Updating a game in the games list
+###
+PUT http://localhost:5046/games/7
+Content-Type: application/json
+
+{
+    "Name" : "Sekiro: Shadows Die Twice",
+    "Genre" : "Action RPG",
+    "Price" : 60,
+    "GOTY" : true,
+    "ReleaseDate" : "2019-03-22"
+}
