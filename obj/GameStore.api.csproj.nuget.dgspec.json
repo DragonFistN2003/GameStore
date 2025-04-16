@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\GameStore.api\\GameStore.api.csproj": {}
+    "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\gamestore.api\\GameStore.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\GameStore.api\\GameStore.api.csproj": {
+    "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\gamestore.api\\GameStore.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\GameStore.api\\GameStore.api.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\gamestore.api\\GameStore.api.csproj",
         "projectName": "GameStore.api",
-        "projectPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\GameStore.api\\GameStore.api.csproj",
+        "projectPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\gamestore.api\\GameStore.api.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\GameStore.api\\obj\\",
+        "outputPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\Projects\\GameStore\\gamestore.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
