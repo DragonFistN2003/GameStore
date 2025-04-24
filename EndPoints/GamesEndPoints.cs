@@ -1,4 +1,6 @@
+using GameStore.api.Data;
 using GameStore.api.Dtos;
+using GameStore.api.Entities;
 
 public static class GamesEndPoints
 {
@@ -25,24 +27,32 @@ public static class GamesEndPoints
     public static void MapGamesEndpoints(this IEndpointRouteBuilder endpoints)
     {
         // Create / game
-        endpoints.MapPost("/games", (CreateGameDto newGame) =>
+        endpoints.MapPost("/games", (CreateGameDto newGame , GameStoreContext dbcontext) =>
         {
-            if (string.IsNullOrEmpty(newGame.Name) || string.IsNullOrEmpty(newGame.Genre) || newGame.Price <= 0 || newGame.ReleaseDate == default)
+
+            Game game = new()
             {
-                return Results.BadRequest("Invalid game data. All fields must be provided and valid.");
-            }
+                Name = newGame.Name,
+                Genre = dbcontext.Genres.Find(newGame.GenreId),
+                GenreId = newGame.GenreId,
+                GOTY = newGame.GOTY,
+                Price = newGame.Price,
+                ReleaseDate = newGame.ReleaseDate
+            };
+            
+            dbcontext.Games.Add(game);
+            dbcontext.SaveChanges();
 
-            GameDto game = new(
-                games.Count + 1,
-                newGame.Name,
-                newGame.Genre,
-                newGame.Price,
-                newGame.GOTY,
-                newGame.ReleaseDate
+            GameDto gameDto = new(
+                game.Id,
+                game.Name,
+                game.Genre!.Name,
+                game.Price,
+                game.GOTY,
+                game.ReleaseDate
             );
-            games.Add(game);
 
-            return Results.CreatedAtRoute("GetGame", new { Id = game.Id }, game);
+            return Results.CreatedAtRoute("GetGame", new { Id = game.Id }, gameDto);
         });
 
         // Read / games
