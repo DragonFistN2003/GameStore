@@ -1,6 +1,7 @@
 using GameStore.api.Data;
 using GameStore.api.Dtos;
 using GameStore.api.Entities;
+using GameStore.api.Mapping;
 
 public static class GamesEndPoints
 {
@@ -30,29 +31,14 @@ public static class GamesEndPoints
         endpoints.MapPost("/games", (CreateGameDto newGame , GameStoreContext dbcontext) =>
         {
 
-            Game game = new()
-            {
-                Name = newGame.Name,
-                Genre = dbcontext.Genres.Find(newGame.GenreId),
-                GenreId = newGame.GenreId,
-                GOTY = newGame.GOTY,
-                Price = newGame.Price,
-                ReleaseDate = newGame.ReleaseDate
-            };
+            Game game =  newGame.ToEntity();
+            game.Genre = dbcontext.Genres.Find(newGame.GenreId);
             
             dbcontext.Games.Add(game);
             dbcontext.SaveChanges();
 
-            GameDto gameDto = new(
-                game.Id,
-                game.Name,
-                game.Genre!.Name,
-                game.Price,
-                game.GOTY,
-                game.ReleaseDate
-            );
 
-            return Results.CreatedAtRoute("GetGame", new { Id = game.Id }, gameDto);
+            return Results.CreatedAtRoute("GetGame", new { Id = game.Id }, game.ToDto());
         });
 
         // Read / games
