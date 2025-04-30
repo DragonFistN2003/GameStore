@@ -21,7 +21,20 @@ namespace GameStore.api.Mapping
             };
         }
 
-        public static GameDto ToDto(this Game game){
+        public static Game UpdateEntity(this UpdateGameDto game , int id){
+
+            return new()
+            {
+                Id = id,
+                Name = game.Name,
+                GenreId = game.GenreId,
+                GOTY = game.GOTY,
+                Price = game.Price,
+                ReleaseDate = game.ReleaseDate
+            };
+        }
+
+        public static GameSummaryDto ToGameSummaryDto(this Game game){
 
             return new(
                 game.Id,
@@ -32,6 +45,18 @@ namespace GameStore.api.Mapping
                 game.ReleaseDate
             );
 
+        }
+
+        public static GameDetailsDto ToGameDetailsDto(this Game game){
+
+            return new(
+                game.Id,
+                game.Name,
+                game.GenreId,
+                game.Price,
+                game.GOTY,
+                game.ReleaseDate
+            );
         }
     }
 }

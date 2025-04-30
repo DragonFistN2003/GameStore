@@ -1,8 +1,9 @@
 namespace GameStore.api.Dtos;
 
-public record class UpdateGameDto(
+public record class GameSummaryDto(
+    int Id,
     string Name,
-    int GenreId,
+    string Genre,
     decimal Price,
     Boolean GOTY,
     DateOnly ReleaseDate
