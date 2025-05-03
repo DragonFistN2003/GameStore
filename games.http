@@ -3,7 +3,7 @@ GET http://localhost:5046/games
 
 // Getting a specific game by id
 ###
-GET http://localhost:5046/games/9
+GET http://localhost:5046/games/4
 
 // Adding a new game to the games list
 ###

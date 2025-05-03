@@ -1,4 +1,5 @@
 using GameStore.api.Data;
+using GameStore.api.EndPoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,9 @@ var lonewolf = "5 more monkeys jumping on the bed";
 // Map endpoints
 app.MapGamesEndpoints();
 
+app.MapGenresEndPoints();
 // Apply database migrations
-app.MigrateDb();
+await app.MigrateDbAsync();
 
 // Map a test endpoint
 app.MapGet("/", () => lonewolf);
